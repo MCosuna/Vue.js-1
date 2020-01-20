@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .tachado {
+            text-decoration: line-through;
+            background-color: pink;
+
+        }
+
+        #app {
+            border: 3px solid black;
+            padding: 5px;
+            width: 350px;
+            background-color: yellow;
+        }
+
+        h2 {
+            padding: 8px;
+            color: white;
+            size: 25px;
+        }
+
+        body {
+            background-image: url('https://img.freepik.com/foto-gratis/fondo-decorativo-detalle-corcho_23-2148210093.jpg?size=626&ext=jpg');
+
+        }
+    </style>
+
+    <title>proyecto</title>
+</head>
+
+<body>
+    <h2>Lista con Vue.Js</h2>
+    <div id="app">
+        <input type="text" v-model="texto">
+        <button v-on:click="metodo">add</button>
+        <button v-on:click="eliminar">delete</button>
+        <!-- <p v-on:click.capture="eliminar">eeeee</p> -->
+        <div v-if="listaVisible">
+            <ol>
+                <!-- <li v-for="todo in todos"> -->
+                <li v-for="(elemento, index) in todos">
+                    <input id="check" type="checkbox" v-model="elemento.seleccion" >
+                    <!-- indicamos el nombre de la clase, cuando el elemento este a true, se tacha, si esta a false vuelve. -->
+                    <label v-bind:class="{tachado:elemento.seleccion}">{{elemento.text}}</label>
+                    <!-- sirve para hacer bucles -->
+                    <!-- {{ todo.text }} <h4>{{todo.titulo}}</h4> -->
+                </li>
+            </ol>
+            <p>Tienes {{total}} tareas en total</p>
+            <p>Tienes {{realizadas}} tareas realizadas</p>
+
+        </div>
+
+    </div>
+
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>
